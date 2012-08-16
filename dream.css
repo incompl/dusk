@@ -1,0 +1,50 @@
+body {
+  background-color: black;
+  color: #CACACA;
+  font-size: 20px;
+  font-family: monospace;
+}
+
+#input {
+  margin: 0 1em;
+}
+
+input {
+  background-color: black;
+  border: none;
+  color: green;
+  background-color: #2C2C2C;
+  font-size: 20px;
+  margin: 0;
+  padding: .3em;
+  border-radius: 5px;
+}
+
+input:focus {
+    outline: none;
+}
+
+#sidebar {
+  float: right;
+  width: 300px;
+  margin: .5em;
+}
+
+#response {
+  padding: 10px;
+}
+
+#text {
+  width: 600px;
+  min-height: 300px;
+  padding: 1em;
+}
+
+.item {
+  padding: .5em;
+  color: #C9BE6B;
+}
+
+.roomDescription {
+  color: #71CA6B;
+}
