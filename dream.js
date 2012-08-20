@@ -237,6 +237,11 @@ window.dream = (function() {
       else if (game.room.npc && game.room.npc.dialog[command]) {
         game.respond(game.room.npc.name + ' says "' + game.room.npc.dialog[command] + '"');
       }
+
+      // room feature
+      else if (game.room.features && game.room.features[command]) {
+        game.respond(game.room.features[command]);
+      }
       
       // caps
       else if (command === "caps") {
