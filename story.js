@@ -89,7 +89,7 @@ dream.begin({
                   flowers peek between the stones and line both sides \
                   of the road. To the north stands the stately courthouse, \
                   from the south comes the splashing sound of the fountain \
-                  in Crowsrest Square.",
+                  in Crows' Rest Square.",
     north: "start",
     west: "oceanAveWest",
     east: "oceanAveEast",
@@ -98,7 +98,9 @@ dream.begin({
 
   oceanAveWest: {
     name: "Intersection of Market and Ocean",
-    description: "TODO",
+    description: "The east-west cobblestone Ocean Avenue intersects \
+                  here with the north-south overgrown path of \
+                  Market Street.",
     east: "oceanAveMiddle",
     west: "roadToColdwater",
     south: "marketNorth"
@@ -149,7 +151,7 @@ dream.begin({
   homesteadStVeryNorth: {
     name: "Homestead Street",
     description: "Homestead Street comes to a lazy end here, gradually \
-                  becoming replaced with swaying tall grasses. The stench \
+                  becoming replaced with swaying tall grasses. The flavor \
                   of cattle hangs in the air, save for when a cool breeze \
                   clears it from the west. Moos, bleats, and goatcries \
                   sound all round from fenced fields and pens. A barn is \
@@ -180,7 +182,14 @@ dream.begin({
 
   marketNorth: {
     name: "Market Street",
-    description: "TODO",
+    description: "This overgrown dirt path leads through the busiest \
+                  part of town. Residents, dressed tidily in crimson or \
+                  gray or straw, walk about pushing wooden carts, or hauling \
+                  burlap bags, or hugging armfuls of books, or leading \
+                  ponies or goats. To the west is the humble town library, \
+                  mostly hidden behind young elm trees. To the east a \
+                  freestanding vinework iron gate leads into Crows' Rest \
+                  Square.",
     north: "oceanAveWest",
     east: "crowsrestSquare",
     west: "library",
@@ -189,7 +198,14 @@ dream.begin({
 
   marketMiddle: {
     name: "Market Street",
-    description: "TODO",
+    description: "Here Market Street splits, creating an uneven circle \
+                  around an open air market. A variety of stalls are set \
+                  up, pawning squash, carrots, potatos, tea leaves, \
+                  dried beans, sheep's wool, ironwork tools, and more. \
+                  Goats and sheep bleat in protest at being auctioned. \
+                  To the west is a circular stone hut with a wooden sign \
+                  painted with a coffee cup, and to the east is the \
+                  grassy hill of the town park.",
     north: "marketNorth",
     east: "park",
     west: "cafe",
@@ -198,14 +214,27 @@ dream.begin({
 
   marketBridge: {
     name: "Market Bridge",
-    description: "TODO",
+    description: "This is the western of the two bridges that cross \
+                  the Clear River in Dusk. The river is about 50 feet \
+                  wide, splashing long at a hurried pace. True to its \
+                  name, the water is absolutely transparent, and the \
+                  smooth riverstones and myriad fishes below are quite \
+                  visible. The bridge itself is two arches of sturdy \
+                  granite, with a circular landing in the middle.",
     north: "marketMiddle",
     south: "marketSouth"
   },
 
   marketSouth: {
     name: "Market Street",
-    description: "TODO",
+    description: "Market street ends at a small \
+                  plaza not large enough to bear a name. To the west is \
+                  a wide building with a slanted roof, from which the sound \
+                  of muted chatter eminates. \
+                  Above the double doors is a sign featuring a fat sow with a \
+                  black spot on one ear. To the east, looking rather precarious, \
+                  is a rare two-storied building, identified by a crooked sign \
+                  that reads \"Dusk Inn\".",
     north: "marketBridge",
     east: "inn",
     west: "bar"
@@ -219,7 +248,13 @@ dream.begin({
 
   crowsrestSquare: {
     name: "Crows' Rest Square",
-    description: "TODO",
+    description: "Crows' Rest Square is a well-tended tangle of cobblestone \
+    paths and dense gardens around a central fountain at the heart of the \
+    town of Dusk. In the center of the fountain is a dramatic brown marble \
+    statue of a beatific figure with four angelic wings, arms stretched \
+    outward and head raised to the sky. Benches surround this central \
+    fountain and residents often stop here to take a meal or a restful \
+    break from their day's labors.",
     west: "marketNorth",
     north: "oceanAveMiddle",
     east: "homesteadStMiddle",
@@ -228,7 +263,13 @@ dream.begin({
 
   homesteadStMiddle: {
     name: "Homestead Street",
-    description: "TODO",
+    description: "Homestead, the residential street in Dusk, is a quiet \
+                  packed dirt path lined with quaint boxy houses with \
+                  steeply pitched roofs. Most of the homes have front \
+                  porches and flower gardens, occupied by chatting residents \
+                  or prowling cats. Birdbaths and feeders are common, resulting \
+                  in sweet birdsong most times of day, and flutters of color \
+                  when the birds flit from pirch to pirch.",
     west: "crowsrestSquare",
     north: "oceanAveEast",
     east: "house1",
@@ -237,7 +278,8 @@ dream.begin({
 
   homesteadStSouth: {
     name: "Homestead Street",
-    description: "TODO",
+    description: "An overgrowth of elm trees provides sparse shade over \
+                  this part of the street. ",
     west: "park",
     north: "homesteadStMiddle",
     east: "house2",
@@ -246,7 +288,8 @@ dream.begin({
 
   homesteadBridge: {
     name: "Homestead Bridge",
-    description: "TODO",
+    description: "This is the eastern of the two bridges that cross \
+                  the Clear River in Dusk.",
     north: "homesteadStSouth",
     south: "homesteadVerySouth"
   },
@@ -377,8 +420,14 @@ dream.begin({
   },
 
   park: {
-    name: "Park",
-    description: "TODO",
+    name: "Riverfront Hill",
+    description: "This park is a gentle hill that lazily rolls down into \
+                  the Clear River to the south. The hillside is spattered with \
+                  thousands of crimson poppy flowers, drawing the attention of \
+                  occasional honey bees. The flowers have no aroma; instead, the \
+                  scent of fresh-cut grass fills the air. Here and there the \
+                  local children have abandoned dolls and fighting-sticks, \
+                  surely to be happily stumbled upon another day.",
     west: "marketMiddle",
     north: "crowsrestSquare",
     east: "homesteadStSouth"
