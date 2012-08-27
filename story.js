@@ -129,13 +129,28 @@ dream.begin({
 
   roadToGrayMountains: {
     name: "Road to the Gray Mountains",
+    west: "oceanAveEast",
     description: "To the east, the road leads out of Dusk. The river and \
                   the road wind through increasingly hilly planes, on and \
                   on and out of sight. The Gray Mountains, the eventual \
                   destination of the road, loom on the horizon, hazy and \
                   vague. Your quest won't lead you into those mountains, \
                   so you should turn back into town and not wander off.",
-    west: "oceanAveEast"
+    npc: {
+      name: "Emily Fisher",
+      dialog: {
+        talk: "Hi! Don't tell my mom and dad I'm out here. I'm thinking of running AWAY.",
+        away: "Yeah, I don't want to get murdered, so, maybe I'll go live in the PLAINS.",
+        plains: "Dad said an 8 year old wouldn't survive out there. I'll show him!",
+        murder: "I can't believe it! I heard about murderers but I didn't think they were real...",
+        where: "Yesterday? Ummmm..... I don't REMEMBER.",
+        remember: "Oh yeah! I was playing by myself by the river.",
+        what: "I was playing, and um, I tried to get WESLEY to play with me, but he wouldn't...",
+        wesley: "He was going to meet Sarah in the park, and he was MAD...",
+        mad: "Yeah, he said something about Gregory trying to STEAL Sarah...",
+        steal: "How do you steal a person? I don't get it!"
+      }
+    }
   },
 
   homesteadStNorth: {
@@ -170,6 +185,7 @@ dream.begin({
 
   barn: {
     name: "Inside a Barn",
+    leave: "homesteadStVeryNorth",
     description: "This barn, though as tidy as they come, is heady \
                   with the earthy aroma of the bovine that moo lazily \
                   in stalls down both sides of the structure. An \
@@ -177,7 +193,46 @@ dream.begin({
                   flies that zigzag through the air. Fresh bales of hay \
                   are stacked high in the back of the barn, and a variety \
                   of interesing tools hang from pegs whereever they will fit.",
-    leave: "homesteadStVeryNorth"
+    npc: {
+      name: "Wesley Archer",
+      dialog: {
+        talk: "Sigh... farm WORK isn't for me.",
+        work: "I'm getting food in exchange for cleaning this barn, but I can barely stand it!",
+        murder: "I haven't been in town long, so I barely knew Gregory, but we, ah, got along fine.",
+        what: "I was with SARAH at the time of the murder. She can vouch for me.",
+        where: "I was at the park. It was a beautiful evening...",
+        sarah: "I love her, I really do, but I don't know how I can stay in DUSK.",
+        dusk: "There is no work for a singer like me, and the bargoers stopped tipping me after the first week."
+      }
+    },
+    item: {
+      name: "a bag of coffee beans",
+      description: "You could GRIND these.",
+      command: "grind",
+      effect: function(game, item) {
+        if (game.room.name === "Cat's Coffee Cup Cafe") {
+          game.removeItem(item);
+          game.respond("You turn the crank and grind the beans.");
+          game.givePlayerItem({
+            name: "ground coffee beans",
+            description: "you could BREW these",
+            command: "brew",
+            effect: function(game, item) {
+              if (game.room.name === "Cat's Coffee Cup Cafe") {
+                game.removeItem(item);
+                game.talk("Wow! You brew a mean cup of coffee! You should WORK here!");
+              }
+              else {
+                game.respond("You lack the proper tools to grind the beans.");
+              }
+            }
+          });
+        }
+        else {
+          game.respond("You lack the proper tools to grind the beans.");
+        }
+      }
+    }
   },
 
   marketNorth: {
@@ -271,13 +326,32 @@ dream.begin({
   },
 
   library: {
-    name: "Library",
-    description: "TODO",
-    east: "marketNorth"
+    name: "Dusk Town Library",
+    east: "marketNorth",
+    description: "The town libarary is a minor labyrinth of narrow passages \
+                  between tall, overfull bookshelves. The claustrophobia \
+                  is worsened by the smell of stale air and mildew. A few \
+                  shelves wobble when touched, perhaps alluding to a major \
+                  collapse in the library's future. Near the door is the \
+                  librarian's desk, topped with precarious towers of \
+                  leather-bound books and papers.",
+    npc: {
+      name: "Ellie Stone",
+      dialog: {
+        talk: "H-hi... can I help you...?",
+        murder: "Oh... I don't like to think about it...",
+        what: "I was... having dinner with Samantha...",
+        where: "At the b-bakery..."
+      }
+    }
   },
 
   crowsrestSquare: {
     name: "Crows' Rest Square",
+    west: "marketNorth",
+    north: "oceanAveMiddle",
+    east: "homesteadStMiddle",
+    south: "park",
     description: "Crows' Rest Square is a well-tended tangle of cobblestone \
     paths and dense gardens around a central fountain at the heart of the \
     town of Dusk. In the center of the fountain is a dramatic brown marble \
@@ -285,10 +359,21 @@ dream.begin({
     outward and head raised to the sky. Benches surround this central \
     fountain and residents often stop here to take a meal or a restful \
     break from their day's labors.",
-    west: "marketNorth",
-    north: "oceanAveMiddle",
-    east: "homesteadStMiddle",
-    south: "park"
+    npc: {
+      name: "Sarah Flowers",
+      dialog: {
+        talk: "Sigh...",
+        murder: "I don't want to DISCUSS it...",
+        discuss: "Sigh... fine... Gregory was a FOOL and I won't miss him. There? You happy?",
+        fool: "That's right. Just the other day I saw him brawling with Jack over DARTS.",
+        darts: "Darts! A silly GAME! Of all the things you could get worked up about.",
+        game: "There is a dart board at the Spotted Ear. A bad mix with ales, if you ask me.",
+        what: "I was with WESLEY...",
+        where: "I was here... in the park...",
+        wesley: "I do love him so. I hope he can find WORK here in Dusk...",
+        work: "It's a small town for a singer, he says. I hope he can make it work..."
+      }
+    }
   },
 
   homesteadStMiddle: {
@@ -496,7 +581,7 @@ dream.begin({
   },
 
   cafe: {
-    name: "Coffee Shop",
+    name: "Cat's Coffee Cup Cafe",
     east: "marketMiddle",
     description: "A wooden counter circles the rough stone wall of \
                   this small cafe. A few patrons \
@@ -508,12 +593,41 @@ dream.begin({
       machine: "This impressive device is responsible for grinding, \
                 extracting, and pouring coffee into a single mug sitting \
                 below it. A hand crank on the side sets the whole process \
-                in motion."
+                in motion with loud clanks and spinning gears."
     },
     npc: {
       name: "Cat Holiday",
       dialog: {
-        talk: "TODO"
+        // knows about francis argument with gregory
+        // francis is the fisher, they argued over a found necklace
+        talk: "Welcome! Would you like a cup of COFFEE?",
+        coffee: function(game) {
+          if (game.state("coffee")) {
+            game.talk("You only get one for free! Sorry!");
+          }
+          else {
+            game.state("coffee", true);
+            game.talk("Enjoy!");
+            game.givePlayerItem({
+              name: "a cup of hot coffee",
+              description: "Perhaps DRINK it?",
+              command: "drink",
+              effect: function(game, item) {
+                game.removeItem(item);
+                game.respond("You drink the coffee and feel a little jittery...");
+                game.state("jittery", true);
+              }
+            });
+          }
+        },
+        murder: "I know, it's so awful! Poor Gregory, he didn't deserve to die like that.",
+        what: "I took an early nap last night, must have been asleep when the murder happened.",
+        where: "I was at home. No one else was around.",
+        work: "Oh, you're just visiting town? Trying to SOLVE the murder? Hmm...",
+        solve: "Well, come to think of it, I do know SOMETHING...",
+        something: "I don't want you to put too much importance on it, but Gregory and Francis had an ARGUMENT the day before the murder.",
+        argument: "They were arguing over a NECKLACE they found by the river. Don't know if it was worth anything.",
+        necklace: "Silver, I think, but probably not worth much. Don't know why they got so worked up about it."
       }
     }
   },

@@ -85,7 +85,12 @@ window.dream = (function() {
     },
 
     talk: function(message) {
-      game.respond(game.room.npc.name + ' says "' + message + '"');
+      if (typeof message === "string") {
+        game.respond(game.room.npc.name + ' says "' + message + '"');
+      }
+      else {
+        message.call(game, game);
+      }
     },
     
     loop: function() {
@@ -235,7 +240,7 @@ window.dream = (function() {
 
       // npc topic
       else if (game.room.npc && game.room.npc.dialog[command]) {
-        game.respond(game.room.npc.name + ' says "' + game.room.npc.dialog[command] + '"');
+        game.talk(game.room.npc.dialog[command]);
       }
 
       // room feature
