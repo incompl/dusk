@@ -227,6 +227,9 @@ dream.begin({
 
   marketSouth: {
     name: "Market Street",
+    north: "marketBridge",
+    east: "inn",
+    west: "bar",
     description: "Market street ends at a small \
                   plaza not large enough to bear a name. To the west is \
                   a wide building with a slanted roof, from which the sound \
@@ -235,9 +238,36 @@ dream.begin({
                   black spot on one ear. To the east, looking rather precarious, \
                   is a rare two-storied building, identified by a crooked sign \
                   that reads \"Dusk Inn\".",
-    north: "marketBridge",
-    east: "inn",
-    west: "bar"
+    npc: {
+      name: "Edward Ames",
+      dialog: {
+        talk: "Got any spare TOBACCO? I could really use a smoke.",
+        tobacco: "It's tough being an out-of-work butler. Plenty of scraps to eat, but no smokes.",
+        murder: "Awful news! Gregory was quite kind to me. I'll miss the old chap.",
+        what: "I was begging at the time of the murder. Not having any luck at it, I'm afraid.",
+        where: "Right here, sitting outside the bar as I am now.",
+        debt: "Well, you're investigating Gregory's murder, right? Maybe I do have a TIP.",
+        tip: "Gregory, he's a swell guy, but I heard he hadn't paid is bar TAB in weeks.",
+        tab: "If I were Henry, I'd be awfully mad. Did he off him for it? Can't say. Hope that helps you."
+      }
+    },
+    item: {
+      name: "a tobacco cigarette",
+      description: "You could OFFER this to someone.",
+      command: "offer",
+      effect: function(game, item) {
+        if (game.room.npc && game.room.npc.name === "Edward Ames") {
+          game.talk("Thank you very kindly! I owe you a DEBT for this.");
+          game.removeItem(item);
+        }
+        else if (game.room.npc) {
+          game.talk("No, thank you.");
+        }
+        else {
+          game.respond("No one is here to offer your cigarette to.");
+        }
+      }
+    }
   },
 
   library: {
@@ -279,7 +309,9 @@ dream.begin({
   homesteadStSouth: {
     name: "Homestead Street",
     description: "An overgrowth of elm trees provides sparse shade over \
-                  this part of the street. ",
+                  this part of the street. The path is gradually declining \
+                  as it leads south toward the river; the steeper dropoffs \
+                  are alleviated by sets of five or six stone stairs.",
     west: "park",
     north: "homesteadStMiddle",
     east: "house2",
@@ -289,22 +321,54 @@ dream.begin({
   homesteadBridge: {
     name: "Homestead Bridge",
     description: "This is the eastern of the two bridges that cross \
-                  the Clear River in Dusk.",
+                  the Clear River in Dusk. At this crossing the river \
+                  narrows, and thus the crystalline water is deeper \
+                  and more swift than usual. The bridge itself is an \
+                  arch of dark gray granite, stained by the water level \
+                  of floods gone by.",
     north: "homesteadStSouth",
     south: "homesteadVerySouth"
   },
 
   homesteadVerySouth: {
     name: "Homestead Street",
-    description: "TODO",
+    description: "Homestead ends in a mostly vacant yard. Wagons, \
+                  wheelbarrows, spare yokes, barrels, blocks of \
+                  hewn stone, and piles of bricks are scattered about. \
+                  It's not clear how much of it is abandoned and how \
+                  much is being carelessly stored here. An old building \
+                  with boarded up windows is to the east.",
     north: "homesteadBridge",
     east: "abandoned"
   },
 
   bar: {
-    name: "Bar",
-    description: "TODO",
-    east: "marketSouth"
+    name: "The Spotted Ear Tavern",
+    east: "marketSouth",
+    description: "The Spotted Ear is a small tavern, windowless and dim \
+                  at all hours. Oak casks line the wall behind the bar, \
+                  and patrons help themselves to the amber ale they \
+                  contain, dropping a silver coin in a bowl as they do \
+                  so. The floor is covered in the sawdust thrown down \
+                  to soak up the tavern's frequent spills. The majority \
+                  of the room is taken up by unmatching tables and chairs \
+                  of all sizes.",
+    npc: {
+      name: "Henry Headboard",
+      dialog: {
+        talk: "Howdy stranger. I run this here TAVERN.",
+        murder: "Ol' GREG bit it? Hrmph.",
+        where: "I was here, tending the Ear. It was a quiet night. I think TWO people were here.",
+        what: "Just tending bar. Cleaning up spills.",
+        two: "Yeah. FRANCIS the fisherman, and some STRANGER.",
+        francis: "He comes by here every day. Never causes trouble.",
+        stranger: "Yeah. Nautical man by the looks of him. Kept to himself.",
+        greg: "Never liked the guy. I heard that he was constantly stealing books \
+               from the library. Ellie was complaining about that the other night.",
+        tavern: "Yep, the ol' Spotted Ear, founded by my grandfather Jack Headboard. \
+                 Plenty of locals and visitors alike gather here."
+      }
+    }
   },
 
   inn: {
@@ -408,15 +472,50 @@ dream.begin({
   },
 
   house2: {
-    name: "House 2",
-    description: "TODO",
-    west: "homesteadStSouth"
+    name: "The Miller House",
+    west: "homesteadStSouth",
+    description: "This modest home is decorated with trinkets and \
+                  treasures of the sea. Even a fishing net is hung \
+                  from the ceiling, from which baubles and glass \
+                  ornaments hang. A few prize catches are mounted \
+                  on wooden plaques, including a host of whiskered \
+                  catfish and one particularly massive silver and \
+                  white perch.",
+    npc: {
+      name: "Francis Miller",
+      dialog: {
+        talk: "Hello stranger, I'm Francis. I fish the river, mostly.",
+        murder: "I can't believe it, such a violent thing in our town. \
+                 I never expected something like this to happen here.",
+        what: "What, am I under suspicion? I was just having a drink at \
+               the time.",
+        where: "I was at the bar when the murder happened. The bartender \
+                should be able to vouch for me."
+      }
+    }
   },
 
   cafe: {
     name: "Coffee Shop",
-    description: "TODO",
-    east: "marketMiddle"
+    east: "marketMiddle",
+    description: "A wooden counter circles the rough stone wall of \
+                  this small cafe. A few patrons \
+                  stand at this counter, sipping black coffee from colorful \
+                  ceramic mugs. The tall conical roof has a hole at the top, \
+                  letting out steam from the ulta-modern wood-and-brass \
+                  coffee MACHINE.",
+    features: {
+      machine: "This impressive device is responsible for grinding, \
+                extracting, and pouring coffee into a single mug sitting \
+                below it. A hand crank on the side sets the whole process \
+                in motion."
+    },
+    npc: {
+      name: "Cat Holiday",
+      dialog: {
+        talk: "TODO"
+      }
+    }
   },
 
   park: {
@@ -435,8 +534,35 @@ dream.begin({
 
   abandoned: {
     name: "Abandoned Building",
-    description: "TODO",
-    west: "homesteadVerySouth"
-  },
+    west: "homesteadVerySouth",
+    description: "Half the roof of this old building has collapsed, \
+                  and no one ever bothered to even clear the shattered roof \
+                  tiles away. The furniture has all been removed though, \
+                  and there are less-dusty shapes on the floor where furniture \
+                  once stood. In one corner, under the remaining intact \
+                  roof, is a pile of old quilts and a traveller's \
+                  backpack.",
+    npc: {
+      name: "Jack Baxter",
+      dialog: {
+        talk: "Oh. Wasn't expecting to see anyone here. \
+               Are you the OWNER of this building?",
+        owner: "You're not? Oh, good. I've been SLEEPING here \
+                while in town, and I thought no one would bother \
+                me.",
+        sleeping: "Aye, I've been TRAVELLING looking for a new crew \
+                   to sail with. I'm a sailer by trade.",
+        travelling: "I'm heading toward Coldwater, hoping to find \
+                     a crew to join there. I'm running low on \
+                     money, so I sure hope I find work there.",
+        murder: "Murder? I'm just passing through, not interested in \
+                 local gossip, to be honest.",
+        what: "Was having a few pints at the local bar. Don't remember \
+               much of the night, if you catch my meaning.",
+        where: "What's that local bar called again? The Pig's Ear? \
+                That's where I was."
+      }
+    }
+  }
 
 });
