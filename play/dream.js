@@ -121,12 +121,12 @@ window.dream = (function() {
       
       // show npcs
       if (game.room.npc) {
-        game.describeRoom("You see " + game.room.npc.name + ".");
+        game.describeRoom("<span class=\"inRoom\">You see " + game.room.npc.name + ".</span>");
       }
       
       // show items
       if (game.room.item) {
-        game.describeRoom("You see " + game.room.item.name + ".");
+        game.describeRoom("<span class=\"inRoom\">You see " + game.room.item.name + ".</span>");
       }
       
       // show hints

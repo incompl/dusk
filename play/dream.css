@@ -6,11 +6,11 @@ body {
 }
 
 a:link, a:visited {
-  color: white;
+  color: #FFFB00;
 }
 
 a:hover, a:active {
-  color: #FFFB00;
+  color: white;
 }
 
 #input {
@@ -51,6 +51,10 @@ input:focus {
 
 .item {
   padding: .5em;
+  color: #90C0D3;
+}
+
+.inRoom {
   color: #C9BE6B;
 }
 

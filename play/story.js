@@ -24,9 +24,9 @@ dream.begin({
               it was named the Dusk Inn, but our town bears the name to \
               this day.",
         murders: "Gregory Miller. STABBED to death in the prime of his life.",
-        stabbed: "We don't know who dunnit, so to speak. So, is that why \
-                  you're here? YES or no?",
-        yes: "Good, good. Well, before you do your INVESTIGATION and \
+        stabbed: "We don't know who dunnit, so to speak. I assume that's WHY \
+                  you're here.",
+        why: "It is? Good. Well, before you do your INVESTIGATION and \
               I give you the STAFF of Accusation, \
               I'm afraid I must ask a personal FAVOR. I'm sure you'll \
               forgive me.",
@@ -121,7 +121,7 @@ dream.begin({
         where: "Yesterday? Ummmm..... I don't REMEMBER.",
         remember: "Oh yeah! I was playing by myself by the river.",
         what: "I was playing, and um, I tried to get WESLEY to play with me, but he wouldn't...",
-        wesley: "He was going to meet Sarah in the park, and he was MAD...",
+        wesley: "I saw him and Sarah go to the park, and he was MAD...",
         mad: "Yeah, he said something about Gregory trying to STEAL Sarah...",
         steal: "How do you steal a person? I don't get it!"
       }
@@ -174,15 +174,16 @@ dream.begin({
         talk: "Sigh... farm WORK isn't for me.",
         work: function(game) {
           if (game.state("smoked")) {
-            game.talk("I'm getting food in exchange for cleaning this barn, \
+            game.talk("I'm getting a PLACE to stay in exchange for cleaning this barn, \
                        but I can barely stand it!");
           }
           else {
-            game.talk("I'm getting food in exchange for cleaning this barn, \
+            game.talk("I'm getting a PLACE to stay in exchange for cleaning this barn, \
                        but I can barely stand it! \
                        Ugh, I'm going to have a smoke. WANT one?")
           }
         },
+        place: "I'm staying at the Inn, for now anyway.",
         want: function(game) {
           if (game.state("smoked")) {
             game.talk("I don't have any more, sorry!");
@@ -322,7 +323,7 @@ dream.begin({
   library: {
     name: "Dusk Town Library",
     east: "marketNorth",
-    description: "The town libarary is a minor labyrinth of narrow passages \
+    description: "The town library is a minor labyrinth of narrow passages \
                   between tall, overfull bookshelves. The claustrophobia \
                   is worsened by the smell of stale air and mildew. A few \
                   shelves wobble when touched, perhaps alluding to a major \
@@ -403,8 +404,8 @@ dream.begin({
                                       in your hands, falling to the ground, becoming \
                                       a puddle of brown goo on the floor. \
                                       You were wrong! Refresh to play again.");
-                        game.removeItem(item);
                       }
+                      game.removeItem(item);
                     }
                     else {
                       game.respond("No one is here to accuse!");
@@ -489,7 +490,8 @@ dream.begin({
                   so. The floor is covered in the sawdust thrown down \
                   to soak up the tavern's frequent spills. The majority \
                   of the room is taken up by unmatching tables and chairs \
-                  of all sizes.",
+                  of all sizes. A dart board hangs in one corner, the wall \
+                  behind it covered in holes.",
     npc: {
       name: "Henry Headboard",
       dialog: {
@@ -528,7 +530,8 @@ dream.begin({
                   the bottom, prohibiting access.",
       pastries: "A wide variety of pastries rest neatly on ornate blue and \
                  white ceramic plates, including lemon scones, blackberry \
-                 muffins, cinnamon buns, coffee cakes, and apple bread."
+                 muffins, cinnamon buns, coffee cakes, croissants, \
+                 and apple bread."
     },
     npc: {
       name: "Samantha Fisher",
@@ -575,7 +578,7 @@ dream.begin({
     features: {
       desk: "The papers, pens, inkwells, and notebooks covering this desk \
              are meticulously organized according to some framework that \
-             is not immidiately clear.",
+             is not immediately clear.",
       bookshelf: "Even a brief perusal reveals that these books are of \
                   the dryest subject matter imaginable. \"Understanding \
                   International Trade Agreements\" and \"Uses for Second \
@@ -746,6 +749,7 @@ dream.begin({
         done: function(game) {
           if (game.state("done")) {
             game.goto("end");
+            game.respond("Thanks for playing!");
           }
           else {
             game.talk("Say DONE again and we'll head out. Talk to Jon \
@@ -786,8 +790,7 @@ dream.begin({
                   Check out the \
                   <a href=\"https://github.com/incompl/dusk\">source</a> \
                   and have a look at my other \
-                  <a href=\"http://incompl.com\">projects</a>. \
-                  Thanks for playing!"
+                  <a href=\"http://incompl.com\">projects</a>."
   }
 
 });

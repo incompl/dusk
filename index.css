@@ -3,19 +3,19 @@ body {
   color: #A6BFAD;
   font-family: monospace;
   font-size: 18px;
-  margin: 1em auto;
+  margin: -3.5em auto;
   width: 410px;
 }
 
 #logo {
   text-align: center;
-  margin: 0 0 2em;
+  margin: 0 0 1em;
 }
 
 a:link, a:visited {
-  color: #A6BFAD;
+  color: #E5FFED;
 }
 
 a:hover, a:active {
-  color: #E5FFED;
+  color: white;
 }
