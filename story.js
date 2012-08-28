@@ -26,58 +26,33 @@ dream.begin({
         murders: "Gregory Miller. STABBED to death in the prime of his life.",
         stabbed: "We don't know who dunnit, so to speak. So, is that why \
                   you're here? YES or no?",
-        yes: "Good, good. Well, before I give you the STAFF of Accusation, \
+        yes: "Good, good. Well, before you do your INVESTIGATION and \
+              I give you the STAFF of Accusation, \
               I'm afraid I must ask a personal FAVOR. I'm sure you'll \
               forgive me.",
+        investigation: "I recommend starting by asking everybody in town \
+                        three questions. Ask about the MURDER, WHERE they \
+                        were at the time, and WHAT they were doing.",
+        murder: "Everyone should have something to say about the murder. \
+                 Look for someone who has MOTIVE and no ALIBI.",
+        what: "I personally was reviewing case notes when the murder happened. \
+               Are you taking notes on your investigation, by the way? If not, \
+               grab some paper and a pen! You won't regret it, I'm sure.",
+        where: "I was here at the courthouse, by myself.",
+        motive: "That's right. The killer must have had some quarrel with Gregory.",
+        alibi: "Find someone whose location at the time of the murder cannot \
+                be vouched for by someone else.",
         staff: "Yes, it's an old tradition in these parts. To formally \
                 accuse a potential crime-doer of a crime, one must declare \
                 it with the Staff of Accusation in hand. You'll need it, \
                 I'm sure, since you intend to solve our mystery.",
-        favor: "Please bring me a CROISSANT from Samantha's bakery! I do \
+        favor: "Please bring me a croissant from Samantha's bakery! I do \
                 love them. They're proper croissants you see, chewy on \
                 the outside, gooey inside, and a touch of tartness.",
-        croissant: "Yes, how I love those croissants from Samantha's bakery...",
         warning: "That's right. You can only accuse someone using the \
                   staff just once. After that, the GAME will end!",
         game: "I mean the a metaphorical game that you're playing \
                in your search for Gregory Miller's killer."
-      }
-    },
-    item: {
-      name: "a single penny",
-      description: "You could BUY something with this.",
-      command: "buy",
-      effect: function(game, item) {
-        if (game.room.name === "Dusk Inn & Bakery") {
-          game.respond("You buy a croissant.");
-          game.removeItem(item);
-          game.givePlayerItem({
-            name: "a flaky croissant",
-            description: "You're not hungry. Maybe GIVE it to someone?",
-            command: "give",
-            effect: function(game, item) {
-              if (game.room.name === "Courthouse") {
-                game.talk("Oh! So delicious! Thank you so much! But a \
-                           WARNING to you: You can only use it once!");
-                game.removeItem(item);
-                game.givePlayerItem({
-                  name: "Staff of Accusation",
-                  description: "TODO",
-                  command: "accuse",
-                  effect: function(game, item) {
-                    // TODO
-                  }
-                });
-              }
-              else {
-                game.respond("No one here wants it.");
-              }
-            }
-          });
-        }
-        else {
-          game.respond("Nothing to buy here.");
-        }
       }
     }
   },
@@ -197,7 +172,43 @@ dream.begin({
       name: "Wesley Archer",
       dialog: {
         talk: "Sigh... farm WORK isn't for me.",
-        work: "I'm getting food in exchange for cleaning this barn, but I can barely stand it!",
+        work: function(game) {
+          if (game.state("smoked")) {
+            game.talk("I'm getting food in exchange for cleaning this barn, \
+                       but I can barely stand it!");
+          }
+          else {
+            game.talk("I'm getting food in exchange for cleaning this barn, \
+                       but I can barely stand it! \
+                       Ugh, I'm going to have a smoke. WANT one?")
+          }
+        },
+        want: function(game) {
+          if (game.state("smoked")) {
+            game.talk("I don't have any more, sorry!");
+          }
+          else {
+            game.talk("Here you go.");
+            game.givePlayerItem({
+              name: "a tobacco cigarette",
+              description: "You could OFFER this to someone.",
+              command: "offer",
+              effect: function(game, item) {
+                if (game.room.npc && game.room.npc.name === "Edward Ames") {
+                  game.talk("Thank you very kindly! I owe you a DEBT for this.");
+                  game.removeItem(item);
+                }
+                else if (game.room.npc) {
+                  game.talk("No, thank you.");
+                }
+                else {
+                  game.respond("No one is here to offer your cigarette to.");
+                }
+              }
+            });
+            game.state("smoked", true);
+          }
+        },
         murder: "I haven't been in town long, so I barely knew Gregory, but we, ah, got along fine.",
         what: "I was with SARAH at the time of the murder. She can vouch for me.",
         where: "I was at the park. It was a beautiful evening...",
@@ -302,25 +313,8 @@ dream.begin({
         what: "I was begging at the time of the murder. Not having any luck at it, I'm afraid.",
         where: "Right here, sitting outside the bar as I am now.",
         debt: "Well, you're investigating Gregory's murder, right? Maybe I do have a TIP.",
-        tip: "Gregory, he's a swell guy, but I heard he hadn't paid is bar TAB in weeks.",
+        tip: "Gregory, he was a swell guy, but I heard he hadn't paid is bar TAB in weeks.",
         tab: "If I were Henry, I'd be awfully mad. Did he off him for it? Can't say. Hope that helps you."
-      }
-    },
-    item: {
-      name: "a tobacco cigarette",
-      description: "You could OFFER this to someone.",
-      command: "offer",
-      effect: function(game, item) {
-        if (game.room.npc && game.room.npc.name === "Edward Ames") {
-          game.talk("Thank you very kindly! I owe you a DEBT for this.");
-          game.removeItem(item);
-        }
-        else if (game.room.npc) {
-          game.talk("No, thank you.");
-        }
-        else {
-          game.respond("No one is here to offer your cigarette to.");
-        }
       }
     }
   },
@@ -372,6 +366,64 @@ dream.begin({
         where: "I was here... in the park...",
         wesley: "I do love him so. I hope he can find WORK here in Dusk...",
         work: "It's a small town for a singer, he says. I hope he can make it work..."
+      }
+    },
+    item: {
+      name: "a single penny",
+      description: "You could BUY something with this.",
+      command: "buy",
+      effect: function(game, item) {
+        if (game.room.name === "Dusk Inn & Bakery") {
+          game.respond("You buy a croissant.");
+          game.removeItem(item);
+          game.givePlayerItem({
+            name: "a flaky croissant",
+            description: "You're not hungry. Maybe GIVE it to someone?",
+            command: "give",
+            effect: function(game, item) {
+              if (game.room.name === "Courthouse") {
+                game.talk("Oh! So delicious! Thank you so much! I will give \
+                           you the Staff of Accusation. But a \
+                           WARNING to you: You can only use it once!");
+                game.removeItem(item);
+                game.givePlayerItem({
+                  name: "Staff of Accusation",
+                  description: "An oak staff with a detailed carving of a \
+                                pointing finger at its head. You could use \
+                                this to ACCUSE someone, but only once!",
+                  command: "accuse",
+                  effect: function(game, item) {
+                    if (game.room.npc) {
+                      if (game.room.npc.name === "Jon Fisher") {
+                        game.goto("outsideJail");
+                        game.respond("LATER THAT DAY...");
+                      }
+                      else {
+                        game.respond("The Staff of Accusation shrivels and melts \
+                                      in your hands, falling to the ground, becoming \
+                                      a puddle of brown goo on the floor. \
+                                      You were wrong! Refresh to play again.");
+                        game.removeItem(item);
+                      }
+                    }
+                    else {
+                      game.respond("No one is here to accuse!");
+                    }
+                  }
+                });
+              }
+              else if (game.room.npc) {
+                game.talk("No thanks!");
+              }
+              else {
+                game.respond("No one is here to give it to.");
+              }
+            }
+          });
+        }
+        else {
+          game.respond("Nothing to buy here.");
+        }
       }
     }
   },
@@ -598,8 +650,6 @@ dream.begin({
     npc: {
       name: "Cat Holiday",
       dialog: {
-        // knows about francis argument with gregory
-        // francis is the fisher, they argued over a found necklace
         talk: "Welcome! Would you like a cup of COFFEE?",
         coffee: function(game) {
           if (game.state("coffee")) {
@@ -677,6 +727,67 @@ dream.begin({
                 That's where I was."
       }
     }
+  },
+
+  outsideJail: {
+    name: "Outside a Jail Cell",
+    north: "jail",
+    description: "This is a small basement room outside of a single \
+                  jail cell. The room is sparse: there is only a bare \
+                  wooden desk and chair, as well as a peg on the wall \
+                  that holds a single ring and key. The air is stagnant \
+                  and smells of must.",
+    npc: {
+      name: "Judge Headswell",
+      dialog: {
+        talk: "Well, you did it! The staff is never wrong, and I trust \
+               in your investigation as well. Of course Jon confessed. \
+               You should talk to him, and tell me when you're DONE.",
+        done: function(game) {
+          if (game.state("done")) {
+            game.goto("end");
+          }
+          else {
+            game.talk("Say DONE again and we'll head out. Talk to Jon \
+                      first if you haven't yet.");
+            game.state("done", true);
+          }
+        }
+      }
+    }
+  },
+
+  jail: {
+    name: "Jail Cell",
+    south: "outsideJail",
+    description: "A plain jail cell with cold stone walls, a cot, and a \
+                  desk with a single open BOOK. A candle sconce on the wall \
+                  and a small barred window near the roof provide all the \
+                  light that is present.",
+    features: {
+      book: "This book is titled \"The Staff of Accusation and The Law: \
+             Can The Fabled Staff Be Appealed\"."
+    },
+    npc: {
+      name: "Jon Fisher",
+      dialog: {
+        talk: "Looks like you got me. I thought it was the perfect CRIME!",
+        crime: "Who'd have thought that everyone in the town would have \
+                either an alibi or no motive! Or did you just make a lucky \
+                GUESS?",
+        guess: "Either way, you got me. Now please leave me to my shame."
+      }
+    }
+  },
+
+  end: {
+    name: "The End",
+    description: "I hope you enjoyed this adventure! \
+                  Check out the \
+                  <a href=\"https://github.com/incompl/dusk\">source</a> \
+                  and have a look at my other \
+                  <a href=\"http://incompl.com\">projects</a>. \
+                  Thanks for playing!"
   }
 
 });

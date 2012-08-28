@@ -5,6 +5,14 @@ body {
   font-family: monospace;
 }
 
+a:link, a:visited {
+  color: white;
+}
+
+a:hover, a:active {
+  color: #FFFB00;
+}
+
 #input {
   margin: 0 1em;
 }

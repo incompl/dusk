@@ -57,6 +57,7 @@ window.dream = (function() {
     
     goto: function(room) {
       game.room = game.story[room];
+      game.loop();
     },
     
     describeRoom: function(text) {
