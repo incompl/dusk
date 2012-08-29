@@ -50,7 +50,7 @@ input:focus {
 }
 
 .item {
-  padding: .5em;
+  padding: .5em 0;
   color: #90C0D3;
 }
 

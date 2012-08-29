@@ -65,25 +65,6 @@ window.dream = (function() {
       $text.append(text);
       $text.append("<br>");
     },
-    
-    exits: function() {
-      var result = "[";
-      _.each(directions, function(dir) {
-        if (game.room[dir]) {
-          if (dir === "enter") {
-            result += "En";
-          }
-          else if (dir === "leave") {
-            result += "Le";
-          }
-          else {
-            result += dir.substr(0, 1).toUpperCase();
-          }
-        }
-      });
-      result += "]";
-      return result;
-    },
 
     talk: function(message) {
       if (typeof message === "string") {
@@ -99,7 +80,7 @@ window.dream = (function() {
       // render current room
       $("#text").empty();
       game.describeRoom("<div class='roomName'>" + game.room.name +
-                        " " + this.exits() + "</div>");
+                        "</div>");
       game.describeRoom("<div class='roomDescription'>" + game.room.description + "</div>");
       
       // show exits
@@ -121,12 +102,12 @@ window.dream = (function() {
       
       // show npcs
       if (game.room.npc) {
-        game.describeRoom("<span class=\"inRoom\">You see " + game.room.npc.name + ".</span>");
+        game.describeRoom("<span class=\"inRoom\">You could TALK to " + game.room.npc.name + ".</span>");
       }
       
       // show items
       if (game.room.item) {
-        game.describeRoom("<span class=\"inRoom\">You see " + game.room.item.name + ".</span>");
+        game.describeRoom("<span class=\"inRoom\">You could GET " + game.room.item.name + ".</span>");
       }
       
       // show hints
@@ -183,7 +164,7 @@ window.dream = (function() {
             response = "You head " + command;
           }
           game.loop();
-          response += " and arrive at " + game.room.name + " " + game.exits();
+          response += " and arrive at " + game.room.name;
           game.respond(response);
         }
         else {
