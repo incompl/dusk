@@ -16,36 +16,27 @@ dream.begin({
     npc: {
       name: "Judge Headswell",
       dialog: {
-        talk: "Welcome to DUSK. Are you here about the MURDERS?",
-        dusk: "Yes, that is the name of our little town. It is named \
-               for the INN that sat on the river, on its lonesome, for \
-               many years before the town sprung up about it.",
-        inn: "The inn... It's still there, of course. No one remembers why \
-              it was named the Dusk Inn, but our town bears the name to \
-              this day.",
-        murders: "Gregory Miller. STABBED to death in the prime of his life.",
+        talk: "Welcome to Dusk. Are you here about the KILLING?",
+        killing: "Gregory Miller. STABBED to death in the prime of his life.",
         stabbed: "We don't know who dunnit, so to speak. I assume that's WHY \
                   you're here.",
-        why: "It is? Good. Well, before you do your INVESTIGATION and \
-              I give you the STAFF of Accusation, \
-              I'm afraid I must ask a personal FAVOR. I'm sure you'll \
-              forgive me.",
-        investigation: "I recommend starting by asking everybody in town \
-                        three questions. Ask about the MURDER, WHERE they \
-                        were at the time, and WHAT they were doing.",
+        why: "It is? Good. In that case, I have some TIPS for your investigation.",
+        tips: "Ask everybody in town about the MURDER, ask them WHERE they where \
+               at the time of the murder, and WHAT they were doing. Start with me.",
         murder: "Everyone should have something to say about the murder. \
                  Look for someone who has MOTIVE and no ALIBI.",
-        what: "I personally was reviewing case notes when the murder happened. \
-               Are you taking notes on your investigation, by the way? If not, \
-               grab some paper and a pen! You won't regret it, I'm sure.",
-        where: "I was here at the courthouse, by myself.",
         motive: "That's right. The killer must have had some quarrel with Gregory.",
         alibi: "Find someone whose location at the time of the murder cannot \
                 be vouched for by someone else.",
-        staff: "Yes, it's an old tradition in these parts. To formally \
+        what: "I personally was reviewing case notes when the murder happened. \
+               Are you taking notes on your investigation, by the way? If not, \
+               grab some paper and a pen! You won't regret it, I'm sure.",
+        where: "I was here at the courthouse, by myself. Oh! That reminds me! You'll \
+                need the STAFF of Accusation before you are done here.",
+        staff: "Yes, it's a mysterious old artifact. To formally \
                 accuse a potential crime-doer of a crime, one must declare \
-                it with the Staff of Accusation in hand. You'll need it, \
-                I'm sure, since you intend to solve our mystery.",
+                it with the Staff of Accusation in hand. But before I give it to \
+                you, I must ask you a small FAVOR.",
         favor: "Please bring me a croissant from Samantha's bakery! I do \
                 love them. They're proper croissants you see, chewy on \
                 the outside, gooey inside, and a touch of tartness.",
@@ -117,10 +108,12 @@ dream.begin({
         talk: "Hi! Don't tell my mom and dad I'm out here. I'm thinking of running AWAY.",
         away: "Yeah, I don't want to get murdered, so, maybe I'll go live in the PLAINS.",
         plains: "Dad said an 8 year old wouldn't survive out there. I'll show him!",
-        murder: "I can't believe it! I heard about murderers but I didn't think they were real...",
+        murder: "I can't believe it! I heard about murderers but I didn't think they \
+                 were real...",
         where: "Yesterday? Ummmm..... I don't REMEMBER.",
         remember: "Oh yeah! I was playing by myself by the river.",
-        what: "I was playing, and um, I tried to get WESLEY to play with me, but he wouldn't...",
+        what: "I was playing, and um, I tried to get WESLEY to play with me, but he \
+               wouldn't...",
         wesley: "I saw him and Sarah go to the park, and he was MAD...",
         mad: "Yeah, he said something about Gregory trying to STEAL Sarah...",
         steal: "How do you steal a person? I don't get it!"
@@ -210,11 +203,13 @@ dream.begin({
             game.state("smoked", true);
           }
         },
-        murder: "I haven't been in town long, so I barely knew Gregory, but we, ah, got along fine.",
+        murder: "I haven't been in town long, so I barely knew Gregory, but we, \
+                 ah, got along fine.",
         what: "I was with SARAH at the time of the murder. She can vouch for me.",
         where: "I was at the park. It was a beautiful evening...",
         sarah: "I love her, I really do, but I don't know how I can stay in DUSK.",
-        dusk: "There is no work for a singer like me, and the bargoers stopped tipping me after the first week."
+        dusk: "There is no work for a singer like me, and the bargoers stopped \
+               tipping me after the first week."
       }
     },
     item: {
@@ -315,7 +310,8 @@ dream.begin({
         where: "Right here, sitting outside the bar as I am now.",
         debt: "Well, you're investigating Gregory's murder, right? Maybe I do have a TIP.",
         tip: "Gregory, he was a swell guy, but I heard he hadn't paid is bar TAB in weeks.",
-        tab: "If I were Henry, I'd be awfully mad. Did he off him for it? Can't say. Hope that helps you."
+        tab: "If I were Henry, I'd be awfully mad. Did he off him for it? Can't say. Hope \
+              that helps you."
       }
     }
   },
@@ -678,9 +674,12 @@ dream.begin({
         where: "I was at home. No one else was around.",
         work: "Oh, you're just visiting town? Trying to SOLVE the murder? Hmm...",
         solve: "Well, come to think of it, I do know SOMETHING...",
-        something: "I don't want you to put too much importance on it, but Gregory and Francis had an ARGUMENT the day before the murder.",
-        argument: "They were arguing over a NECKLACE they found by the river. Don't know if it was worth anything.",
-        necklace: "Silver, I think, but probably not worth much. Don't know why they got so worked up about it."
+        something: "I don't want you to put too much importance on it, but \
+                    Gregory and Francis had an ARGUMENT the day before the murder.",
+        argument: "They were arguing over a NECKLACE they found by the river. \
+                   Don't know if it was worth anything.",
+        necklace: "Silver, I think, but probably not worth much. Don't know why \
+                   they got so worked up about it."
       }
     }
   },
