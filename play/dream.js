@@ -109,7 +109,7 @@ window.dream = (function() {
           if (exitsStr.length !== 0) {
             exitsStr += ", ";
           }
-          exitsStr += dir;
+          exitsStr += dir.toUpperCase();
         }
       });
       if (exitsStr.length === 0) {
@@ -253,14 +253,19 @@ window.dream = (function() {
       else if (command === "caps") {
         game.respond("Very clever.");
       }
+
+      // other invalid things people might try
+      else if (command === "look" ||
+               command === "inspect") {
+        game.respond("You don't " + command + " in this game. \
+                      You should only try typing commands you \
+                      actually see on the screen somewhere.");
+      }
       
       // Invalid command
       else {
         if (command) {
           game.respond("You can't " + command + ".");
-        }
-        else {
-          game.respond("Punch the keys for god's sake.");
         }
       }
       $("#inputValue").val("");
