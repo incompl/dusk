@@ -21,10 +21,11 @@ dream.begin({
         stabbed: "We don't know who dunnit, so to speak. I assume that's WHY \
                   you're here.",
         why: "It is? Good. In that case, I have some TIPS for your investigation.",
-        tips: "Ask everybody in town about the MURDER, ask them WHERE they where \
+        tips: "Ask everybody in town three questions: ask for their REACTION to the \
+               murder, ask them WHERE they were \
                at the time of the murder, and WHAT they were doing. Start with me.",
-        murder: "Everyone should have something to say about the murder. \
-                 Look for someone who has MOTIVE and no ALIBI.",
+        reaction: "Everyone should have something to say about the murder. \
+                   Look for someone who has MOTIVE and no ALIBI.",
         motive: "That's right. The killer must have had some quarrel with Gregory.",
         alibi: "Find someone whose location at the time of the murder cannot \
                 be vouched for by someone else.",
@@ -108,8 +109,8 @@ dream.begin({
         talk: "Hi! Don't tell my mom and dad I'm out here. I'm thinking of running AWAY.",
         away: "Yeah, I don't want to get murdered, so, maybe I'll go live in the PLAINS.",
         plains: "Dad said an 8 year old wouldn't survive out there. I'll show him!",
-        murder: "I can't believe it! I heard about murderers but I didn't think they \
-                 were real...",
+        reaction: "I can't believe it! I heard about murderers but I didn't think they \
+                   were real...",
         where: "Yesterday? Ummmm..... I don't REMEMBER.",
         remember: "Oh yeah! I was playing by myself by the river.",
         what: "I was playing, and um, I tried to get WESLEY to play with me, but he \
@@ -203,8 +204,8 @@ dream.begin({
             game.state("smoked", true);
           }
         },
-        murder: "I haven't been in town long, so I barely knew Gregory, but we, \
-                 ah, got along fine.",
+        reaction: "I haven't been in town long, so I barely knew Gregory, but we, \
+                   ah, got along fine.",
         what: "I was with SARAH at the time of the murder. She can vouch for me.",
         where: "I was at the park. It was a beautiful evening...",
         sarah: "I love her, I really do, but I don't know how I can stay in DUSK.",
@@ -305,7 +306,7 @@ dream.begin({
       dialog: {
         talk: "Got any spare TOBACCO? I could really use a smoke.",
         tobacco: "It's tough being an out-of-work butler. Plenty of scraps to eat, but no smokes.",
-        murder: "Awful news! Gregory was quite kind to me. I'll miss the old chap.",
+        reaction: "Awful news! Gregory was quite kind to me. I'll miss the old chap.",
         what: "I was begging at the time of the murder. Not having any luck at it, I'm afraid.",
         where: "Right here, sitting outside the bar as I am now.",
         debt: "Well, you're investigating Gregory's murder, right? Maybe I do have a TIP.",
@@ -330,7 +331,7 @@ dream.begin({
       name: "Ellie Stone",
       dialog: {
         talk: "H-hi... can I help you...?",
-        murder: "Oh... I don't like to think about it...",
+        reaction: "Oh... I don't like to think about it...",
         what: "I was... having dinner with Samantha...",
         where: "At the b-bakery..."
       }
@@ -354,7 +355,7 @@ dream.begin({
       name: "Sarah Flowers",
       dialog: {
         talk: "Sigh...",
-        murder: "I don't want to DISCUSS it...",
+        reaction: "I don't want to DISCUSS it...",
         discuss: "Sigh... fine... Gregory was a FOOL and I won't miss him. There? You happy?",
         fool: "That's right. Just the other day I saw him brawling with Jack over DARTS.",
         darts: "Darts! A silly GAME! Of all the things you could get worked up about.",
@@ -363,64 +364,6 @@ dream.begin({
         where: "I was here... in the park...",
         wesley: "I do love him so. I hope he can find WORK here in Dusk...",
         work: "It's a small town for a singer, he says. I hope he can make it work..."
-      }
-    },
-    item: {
-      name: "a single penny",
-      description: "You could BUY something with this.",
-      command: "buy",
-      effect: function(game, item) {
-        if (game.room.name === "Dusk Inn & Bakery") {
-          game.respond("You buy a croissant.");
-          game.removeItem(item);
-          game.givePlayerItem({
-            name: "a flaky croissant",
-            description: "You're not hungry. Maybe GIVE it to someone?",
-            command: "give",
-            effect: function(game, item) {
-              if (game.room.name === "Courthouse") {
-                game.talk("Oh! So delicious! Thank you so much! I will give \
-                           you the Staff of Accusation. But a \
-                           WARNING to you: You can only use it once!");
-                game.removeItem(item);
-                game.givePlayerItem({
-                  name: "Staff of Accusation",
-                  description: "An oak staff with a detailed carving of a \
-                                pointing finger at its head. You could use \
-                                this to ACCUSE someone, but only once!",
-                  command: "accuse",
-                  effect: function(game, item) {
-                    if (game.room.npc) {
-                      if (game.room.npc.name === "Jon Fisher") {
-                        game.goto("outsideJail");
-                        game.respond("LATER THAT DAY...");
-                      }
-                      else {
-                        game.respond("The Staff of Accusation shrivels and melts \
-                                      in your hands, falling to the ground, becoming \
-                                      a puddle of brown goo on the floor. \
-                                      You were wrong! Refresh to play again.");
-                      }
-                      game.removeItem(item);
-                    }
-                    else {
-                      game.respond("No one is here to accuse!");
-                    }
-                  }
-                });
-              }
-              else if (game.room.npc) {
-                game.talk("No thanks!");
-              }
-              else {
-                game.respond("No one is here to give it to.");
-              }
-            }
-          });
-        }
-        else {
-          game.respond("Nothing to buy here.");
-        }
       }
     }
   },
@@ -492,7 +435,7 @@ dream.begin({
       name: "Henry Headboard",
       dialog: {
         talk: "Howdy stranger. I run this here TAVERN.",
-        murder: "Ol' GREG bit it? Hrmph.",
+        reaction: "Ol' GREG bit it? Hrmph.",
         where: "I was here, tending the Ear. It was a quiet night. I think TWO people were here.",
         what: "Just tending bar. Cleaning up spills.",
         two: "Yeah. FRANCIS the fisherman, and some STRANGER.",
@@ -542,9 +485,9 @@ dream.begin({
         croissant: "Oh, I reckon someone told you about my famous \
                     croissants? Please BUY one! Only a penny each.",
         buy: "Oh, you don't seem to have any money...",
-        murder: "Ghastly, don't you think? I didn't know Gregory well, \
-                but of course I saw him around. Frightening that this could \
-                happen in our little town...",
+        reaction: "Ghastly, don't you think? I didn't know Gregory well, \
+                   but of course I saw him around. Frightening that this could \
+                   happen in our little town...",
         where: "Last night I was here, cleaning up. ELLIE was here \
                 too, reading. She's nice company, but quiet.",
         what: "I was cleaning up the kitchen, getting ready for an early \
@@ -588,8 +531,8 @@ dream.begin({
                Shipping COFFEE beans to overseas is so meddlingly overtaxed!",
         coffee: "I don't touch the stuff myself. Breaks me out into an awful \
                  sweat. Spirits are the substance of gentlemen, anyhow.",
-        murder: "Gregory Miller, killed, you say? Hmph. Never liked the chap, \
-                 but had no quarrel with him. A shame, I have to say.",
+        reaction: "Gregory Miller, killed, you say? Hmph. Never liked the chap, \
+                   but had no quarrel with him. A shame, I have to say.",
         where: "Yesterday evening? I was here, in my office, by myself. There \
                 is no end to the BUSINESS I must attend to.",
         what: "Filling out tax documents. This is no simple BUSINESS.",
@@ -621,8 +564,9 @@ dream.begin({
       name: "Francis Miller",
       dialog: {
         talk: "Hello stranger, I'm Francis. I fish the river, mostly.",
-        murder: "I can't believe it, such a violent thing in our town. \
-                 I never expected something like this to happen here.",
+        reaction: "I can't believe it. \
+                   I never expected something like this to happen in Dusk, \
+                   much less to my own brother...",
         what: "What, am I under suspicion? I was just having a drink at \
                the time.",
         where: "I was at the bar when the murder happened. The bartender \
@@ -669,7 +613,7 @@ dream.begin({
             });
           }
         },
-        murder: "I know, it's so awful! Poor Gregory, he didn't deserve to die like that.",
+        reaction: "I know, it's so awful! Poor Gregory, he didn't deserve to die like that.",
         what: "I took an early nap last night, must have been asleep when the murder happened.",
         where: "I was at home. No one else was around.",
         work: "Oh, you're just visiting town? Trying to SOLVE the murder? Hmm...",
@@ -686,6 +630,9 @@ dream.begin({
 
   park: {
     name: "Riverfront Hill",
+    west: "marketMiddle",
+    north: "crowsrestSquare",
+    east: "homesteadStSouth",
     description: "This park is a gentle hill that lazily rolls down into \
                   the Clear River to the south. The hillside is spattered with \
                   thousands of crimson poppy flowers, drawing the attention of \
@@ -693,9 +640,76 @@ dream.begin({
                   scent of fresh-cut grass fills the air. Here and there the \
                   local children have abandoned dolls and fighting-sticks, \
                   surely to be happily stumbled upon another day.",
-    west: "marketMiddle",
-    north: "crowsrestSquare",
-    east: "homesteadStSouth"
+    item: {
+      name: "a single penny",
+      description: "You could BUY something with this.",
+      command: "buy",
+      effect: function(game, item) {
+        if (game.room.name === "Dusk Inn & Bakery") {
+          game.respond("You buy a croissant.");
+          game.removeItem(item);
+          game.givePlayerItem({
+            name: "a flaky croissant",
+            description: "You're not hungry. Maybe GIVE it to someone?",
+            command: "give",
+            effect: function(game, item) {
+              if (game.room.name === "Courthouse") {
+                game.talk("Oh! So delicious! Thank you so much! I will give \
+                           you the Staff of Accusation. But a \
+                           WARNING to you: You can only use it once!");
+                game.removeItem(item);
+                game.givePlayerItem({
+                  name: "Staff of Accusation",
+                  description: "An oak staff with a detailed carving of a \
+                                pointing finger at its head. You could use \
+                                this to ACCUSE someone, but only once!",
+                  command: "accuse",
+                  effect: function(game, item) {
+                    if (game.room.npc) {
+                      if (game.room.npc.name === "Jon Fisher") {
+                        game.goto("outsideJail");
+                        game.respond("LATER THAT DAY...");
+                        game.removeItem(item);
+                      }
+                      else if (game.room.npc.name === "Judge Headswell" &&
+                               !game.state("accusedJudge")) {
+                        game.talk("Be careful with that thing! When you use it, you are \
+                                   accusing the person in the room with you of the murder. \
+                                   If you use it again, you will accuse me of the murder. \
+                                   And I can assure you, I am not the murderer!");
+                        game.state("accusedJudge", true);
+                      }
+                      else {
+                        game.respond("The Staff of Accusation shrivels and melts \
+                                      in your hands, falling to the ground, becoming \
+                                      a puddle of brown goo on the floor. \
+                                      You were wrong! Refresh to play again.");
+                        game.removeItem(item);
+                      }
+                    }
+                    else {
+                      game.respond("No one is here to accuse!");
+                    }
+                  }
+                });
+              }
+              else if (game.room.npc) {
+                game.talk("No thanks!");
+              }
+              else {
+                game.respond("No one is here to give it to.");
+              }
+            }
+          });
+        }
+        else if (game.room.name === "The Spotted Ear Tavern") {
+          game.respond("A single penny is not enough for a beer.");
+        }
+        else {
+          game.respond("Nothing to buy here.");
+        }
+      }
+    }
   },
 
   abandoned: {
@@ -721,8 +735,8 @@ dream.begin({
         travelling: "I'm heading toward Coldwater, hoping to find \
                      a crew to join there. I'm running low on \
                      money, so I sure hope I find work there.",
-        murder: "Murder? I'm just passing through, not interested in \
-                 local gossip, to be honest.",
+        reaction: "Murder? I'm just passing through, not interested in \
+                   local gossip, to be honest.",
         what: "Was having a few pints at the local bar. Don't remember \
                much of the night, if you catch my meaning.",
         where: "What's that local bar called again? The Pig's Ear? \
