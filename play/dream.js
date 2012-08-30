@@ -90,7 +90,16 @@ window.dream = (function() {
           if (exitsStr.length !== 0) {
             exitsStr += ", ";
           }
-          exitsStr += dir.toUpperCase();
+          if (dir === "enter") {
+            exitsStr += "ENTER (EN)";
+          }
+          else if (dir === "leave") {
+            exitsStr += "LEAVE (LE)";
+          }
+          else {
+            exitsStr += dir.toUpperCase() +
+                        " (" + dir.substr(0, 1).toUpperCase() + ")";
+          }
         }
       });
       if (exitsStr.length === 0) {
@@ -118,6 +127,16 @@ window.dream = (function() {
     }
     
   };
+
+  $("html")
+  .click(function(e) {
+    $("#inputValue").get(0).focus();
+  })
+  .keydown(function(e) {
+    if (e.keyCode === 27) {
+      $("#inputValue").val("");
+    }
+  });
   
   $("#input").submit(function(e) {
     e.preventDefault();
