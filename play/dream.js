@@ -7,7 +7,7 @@ window.dream = (function() {
     story: null,
     room: null,
     items: [],
-    state: {},
+    myState: {},
     acceptingInput: true,
     lastCommand: null,
     
@@ -51,9 +51,9 @@ window.dream = (function() {
     
     state: function(key, value) {
       if (value !== undefined) {
-        this.state[key] = value;
+        this.myState[key] = value;
       }
-      return this.state[key];
+      return this.myState[key];
     },
     
     goto: function(room) {
@@ -288,7 +288,7 @@ window.dream = (function() {
     game.story = storyJson;
     game.goto("start");
     game.loop();
-  }
+  };
   
   return this;
 
