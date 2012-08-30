@@ -9,6 +9,7 @@ window.dream = (function() {
     items: [],
     state: {},
     acceptingInput: true,
+    lastCommand: null,
     
     respond: function(text) {
       var $response = $("#response");
@@ -133,9 +134,18 @@ window.dream = (function() {
     $("#inputValue").get(0).focus();
   })
   .keydown(function(e) {
-    if (e.keyCode === 27) {
+
+    // clear on escape or down
+    if (e.keyCode === 27 ||
+        e.keyCode === 40) {
       $("#inputValue").val("");
     }
+
+    // repeat command on up
+    if (e.keyCode === 38) {
+      $("#inputValue").val(game.lastCommand);
+    }
+
   });
   
   $("#input").submit(function(e) {
@@ -270,6 +280,7 @@ window.dream = (function() {
       }
       $("#inputValue").val("");
       game.acceptingInput = true;
+      game.lastCommand = command;
     }
   });
   
