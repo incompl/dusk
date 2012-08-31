@@ -125,8 +125,8 @@ dream.begin({
   homesteadStNorth: {
     name: "Homestead Street",
     description: "Here the packed dirt path leads out of town and toward \
-                  the spelt fields and ranches to the north. Ocassionally \
-                  goats and small ponies trot purpousfully down the path, \
+                  the spelt fields and ranches to the north. Occasionally \
+                  goats and small ponies trot purposefully down the path, \
                   apparently of their own direction.",
     south: "oceanAveEast",
     north: "homesteadStVeryNorth"
@@ -161,7 +161,7 @@ dream.begin({
                   audible buzz can be heard from the fat and happy black \
                   flies that zigzag through the air. Fresh bales of hay \
                   are stacked high in the back of the barn, and a variety \
-                  of interesing tools hang from pegs whereever they will fit.",
+                  of interesting tools hang from pegs wherever they will fit.",
     npc: {
       name: "Wesley Archer",
       dialog: {
@@ -263,7 +263,7 @@ dream.begin({
     name: "Market Street",
     description: "Here Market Street splits, creating an uneven circle \
                   around an open air market. A variety of stalls are set \
-                  up, pawning squash, carrots, potatos, tea leaves, \
+                  up, pawning squash, carrots, potatoes, tea leaves, \
                   dried beans, sheep's wool, ironwork tools, and more. \
                   Goats and sheep bleat in protest at being auctioned. \
                   To the west is a circular stone hut with a wooden sign \
@@ -296,7 +296,7 @@ dream.begin({
     description: "Market street ends at a small \
                   plaza not large enough to bear a name. To the west is \
                   a wide building with a slanted roof, from which the sound \
-                  of muted chatter eminates. \
+                  of muted chatter emanates. \
                   Above the double doors is a sign featuring a fat sow with a \
                   black spot on one ear. To the east, looking rather precarious, \
                   is a rare two-storied building, identified by a crooked sign \
@@ -376,7 +376,7 @@ dream.begin({
                   porches and flower gardens, occupied by chatting residents \
                   or prowling cats. Birdbaths and feeders are common, resulting \
                   in sweet birdsong most times of day, and flutters of color \
-                  when the birds flit from pirch to pirch.",
+                  when the birds flit from perch to perch.",
     west: "crowsrestSquare",
     north: "oceanAveEast",
     east: "house1",
@@ -453,7 +453,7 @@ dream.begin({
     name: "Dusk Inn & Bakery",
     west: "marketSouth",
     description: "The perimeter of this stone-walled lobby is cluttered \
-                  with little wodden tables, which are in turn cluttered with \
+                  with little wooden tables, which are in turn cluttered with \
                   pots of poppy flowers, tulips, herbs, and ferns. The \
                   warm aroma of sweets and breads wafts through the room from \
                   the adjecant kitchen. In the back of the room a COUNTER is \
@@ -509,7 +509,7 @@ dream.begin({
     name: "The Fisher House",
     west: "homesteadStMiddle",
     description: "This cozy home is ornately furnished with \
-                  laquored wood, brass ornamentation, and a variety \
+                  lacquered wood, brass ornamentation, and a variety \
                   of scenic oil paintings of all sizes. In one corner, \
                   by an old wood stove, is a hefty and grand DESK. \
                   Behind that is a tall BOOKSHELF that reaches the ceiling, \
@@ -519,7 +519,7 @@ dream.begin({
              are meticulously organized according to some framework that \
              is not immediately clear.",
       bookshelf: "Even a brief perusal reveals that these books are of \
-                  the dryest subject matter imaginable. \"Understanding \
+                  the driest subject matter imaginable. \"Understanding \
                   International Trade Agreements\" and \"Uses for Second \
                   or Third Pressing Groundnut Oil\" are a couple of the \
                   more interesting ones."
@@ -540,7 +540,7 @@ dream.begin({
                    other high value goods. My WIFE's little side business \
                    complicates things even further.",
         wife: "Yes, Samantha. I do love her dearly, of course, but baking \
-               is a business for peasants, and it brings no non-negligable \
+               is a business for peasants, and it brings no non-negligible \
                INCOME into this household.",
         income: "Yes, but I shouldn't be so hard on her. She does love her \
                  sweets. If you stop by her shop, would you mind telling her \
@@ -582,7 +582,7 @@ dream.begin({
                   this small cafe. A few patrons \
                   stand at this counter, sipping black coffee from colorful \
                   ceramic mugs. The tall conical roof has a hole at the top, \
-                  letting out steam from the ulta-modern wood-and-brass \
+                  letting out steam from the ultra-modern wood-and-brass \
                   coffee MACHINE.",
     features: {
       machine: "This impressive device is responsible for grinding, \
@@ -730,9 +730,9 @@ dream.begin({
         owner: "You're not? Oh, good. I've been SLEEPING here \
                 while in town, and I thought no one would bother \
                 me.",
-        sleeping: "Aye, I've been TRAVELLING looking for a new crew \
+        sleeping: "Aye, I've been TRAVELING looking for a new crew \
                    to sail with. I'm a sailer by trade.",
-        travelling: "I'm heading toward Coldwater, hoping to find \
+        traveling: "I'm heading toward Coldwater, hoping to find \
                      a crew to join there. I'm running low on \
                      money, so I sure hope I find work there.",
         reaction: "Murder? I'm just passing through, not interested in \
