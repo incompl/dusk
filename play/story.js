@@ -14,7 +14,7 @@ dream.begin({
       portrait: "A portait of Judge Green, first elected judge of Dusk."
     },
     npc: {
-      name: "Judge Headswell",
+      name: "Judge Headston",
       dialog: {
         talk: "Welcome to Dusk. Are you here about the KILLING?",
         killing: "Gregory Miller. STABBED to death in the prime of his life.",
@@ -671,7 +671,7 @@ dream.begin({
                         game.respond("LATER THAT DAY...");
                         game.removeItem(item);
                       }
-                      else if (game.room.npc.name === "Judge Headswell" &&
+                      else if (game.room.npc.name === "Judge Headston" &&
                                !game.state("accusedJudge")) {
                         game.talk("Be careful with that thing! When you use it, you are \
                                    accusing the person in the room with you of the murder. \
@@ -754,7 +754,7 @@ dream.begin({
                   that holds a single ring and key. The air is stagnant \
                   and smells of must.",
     npc: {
-      name: "Judge Headswell",
+      name: "Judge Headston",
       dialog: {
         talk: "Well, you did it! The staff is never wrong, and I trust \
                in your investigation as well. Of course Jon confessed. \
@@ -801,9 +801,9 @@ dream.begin({
     name: "The End",
     description: "I hope you enjoyed this adventure! \
                   Check out the \
-                  <a href=\"https://github.com/incompl/dusk\">source</a> \
+                  <a href=\"https://github.com/incompl/dusk\" target=\"_blank\">source</a> \
                   and have a look at my other \
-                  <a href=\"http://incompl.com\">projects</a>."
+                  <a href=\"http://incompl.com\" target=\"_blank\">projects</a>."
   }
 
 });

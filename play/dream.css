@@ -6,11 +6,12 @@ body {
 }
 
 a:link, a:visited {
-  color: #FFFB00;
+  color: white;
 }
 
 a:hover, a:active {
   color: white;
+  background-color: #054F00;
 }
 
 #input {
