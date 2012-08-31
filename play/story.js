@@ -41,8 +41,8 @@ dream.begin({
         favor: "Please bring me a croissant from Samantha's bakery! I do \
                 love them. They're proper croissants you see, chewy on \
                 the outside, gooey inside, and a touch of tartness.",
-        warning: "That's right. You can only accuse someone using the \
-                  staff just once. After that, the GAME will end!",
+        warning: "That's right. When you stand in a room with someone and \
+                  use the staff to accuse them, the GAME will end!",
         game: "I mean the a metaphorical game that you're playing \
                in your search for Gregory Miller's killer."
       }
