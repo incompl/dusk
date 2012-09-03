@@ -129,11 +129,7 @@ window.dream = (function() {
     
   };
 
-  $("html")
-  .click(function(e) {
-    $("#inputValue").get(0).focus();
-  })
-  .keydown(function(e) {
+  $("html").keydown(function(e) {
 
     // clear on escape or down
     if (e.keyCode === 27 ||
@@ -270,6 +266,12 @@ window.dream = (function() {
         game.respond("You don't " + command + " in this game. \
                       You should only try typing commands you \
                       actually see on the screen somewhere.");
+      }
+
+      // the poor soul typed "help"
+      else if (command === "help") {
+        game.respond("All you need to know is that anything you see in all \
+                      CAPS is something you should try typing.");
       }
       
       // Invalid command

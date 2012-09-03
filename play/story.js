@@ -135,9 +135,10 @@ dream.begin({
   homesteadStVeryNorth: {
     name: "Homestead Street",
     description: "Homestead Street comes to a lazy end here, gradually \
-                  becoming replaced with swaying tall grasses. The flavor \
-                  of cattle hangs in the air, save for when a cool breeze \
-                  clears it from the west. Moos, bleats, and goatcries \
+                  becoming replaced with swaying tall grasses. There is \
+                  little respite from the hot sun out here, save for an \
+                  occassional cool breeze from the west. \
+                  Moos, bleats, and goatcries \
                   sound all round from fenced fields and pens. A barn is \
                   here, the closest \
                   one to town, painted a rambunctious shade of turquoise.",
@@ -704,6 +705,9 @@ dream.begin({
         }
         else if (game.room.name === "The Spotted Ear Tavern") {
           game.respond("A single penny is not enough for a beer.");
+        }
+        else if (game.room.name === "Cat's Coffee Cup Cafe") {
+          game.respond("A single penny is not enough for a coffee.");
         }
         else {
           game.respond("Nothing to buy here.");
