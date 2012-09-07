@@ -3,3 +3,5 @@
 an interactive fiction murder mystery
 
 built on [dream](https://github.com/incompl/dream)
+
+[play](http://dusk.incompl.com)
